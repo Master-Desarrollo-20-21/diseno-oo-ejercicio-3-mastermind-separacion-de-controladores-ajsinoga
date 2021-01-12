@@ -5,9 +5,12 @@ import java.io.InputStreamReader;
 
 public class Console {
 
-	private static Console console = new Console();
+	private static Console console = null;
 
 	public static Console getInstance() {
+		if (console == null) {
+			console = new Console();
+		}
 		return console;
 	}
 
