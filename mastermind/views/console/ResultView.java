@@ -8,32 +8,30 @@ public class ResultView {
 
     private PlayController playController;
     private CombinationView combinationView;
-    private SecretCombinationView secretCombinationView;
-    private Console console;
+    private SecretCombinationView secretCombinationView;    
 
     public ResultView(PlayController playController) {
 		this.playController = playController;
         this.combinationView = new CombinationView(playController);
-        this.secretCombinationView = new SecretCombinationView(playController);
-        this.console = Console.getInstance();
+        this.secretCombinationView = new SecretCombinationView(playController);        
     }
     
 	public void showNumberOfAttempts() {
-        console.outln("\n" + Integer.toString(this.playController.getCurrentAttempt()) + Message.ATTEMPS.getMessage());		
+        Console.getInstance().outln("\n" + Integer.toString(this.playController.getCurrentAttempt()) + Message.ATTEMPS.getMessage());		
 	}
     
     public void showResult() {   
         this.showNumberOfAttempts();
-        console.outln(this.secretCombinationView.show()); 
+        Console.getInstance().outln(this.secretCombinationView.show()); 
         for (int i = 0; i < this.playController.getCurrentAttempt(); i++) {
-            console.outln(this.combinationView.show(i)  + " --> " 
+            Console.getInstance().outln(this.combinationView.show(i)  + " --> " 
                         + this.playController.numberOfBlacksAttempt(i) + " blacks and " + this.playController.numberOfWhitesAttempt(i) + " whites");
         }
         if (this.playController.isWinner()) {
-			console.outln(Message.WINNER.getMessage());;
+			Console.getInstance().outln(Message.WINNER.getMessage());;
 		} else if (this.playController.isCompleted()) {
-			console.outln(Message.LOOSER.getMessage());
-			console.outln(Message.SECRET.getMessage() + this.secretCombinationView.showDecrypted());			
+			Console.getInstance().outln(Message.LOOSER.getMessage());
+			Console.getInstance().outln(Message.SECRET.getMessage() + this.secretCombinationView.showDecrypted());			
 		}
     }   
 }

@@ -16,12 +16,11 @@ public class CombinationView {
     }
 
     public String read(String title) {
-        Console console = Console.getInstance();
         String proposal;
         Error error;
 
         do {
-            proposal = console.readString(title);
+            proposal = Console.getInstance().readString(title);
             if (!isValidLength(proposal.length())) {
                 error = Error.WRONG_LENGTH;
             } else if (!areValidColors(proposal)) {

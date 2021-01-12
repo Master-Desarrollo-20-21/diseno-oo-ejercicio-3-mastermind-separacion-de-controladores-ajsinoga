@@ -15,14 +15,13 @@ public class YesNoDialog {
 	public boolean read(String message) {
 		assert message != null;
 		
-		Console console = Console.getInstance();
 		boolean error;
 		do {
-			console.out(message);
-			this.answer = console.readChar(YesNoDialog.SUFFIX);
+			Console.getInstance().out(message);
+			this.answer = Console.getInstance().readChar(YesNoDialog.SUFFIX);
 			error = !this.isAffirmative() && !this.isNegative();
 			if (error) {
-				console.outln(YesNoDialog.MESSAGE);
+				Console.getInstance().outln(YesNoDialog.MESSAGE);
 			}
 		} while (error);
 		return this.isAffirmative();

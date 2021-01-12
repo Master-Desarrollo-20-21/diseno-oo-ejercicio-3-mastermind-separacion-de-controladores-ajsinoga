@@ -5,10 +5,17 @@ import java.io.InputStreamReader;
 
 public class Console {
 
-	private static Console console = new Console();
+	private static Console console = null;
 
 	public static Console getInstance() {
-		return console;
+		if (Console.console == null) {
+			Console.console = new Console();
+		}
+		return Console.console;
+	}
+
+	private Console() {
+
 	}
 
 	public String readString(String string) {
